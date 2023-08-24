@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { KeyboardEvent, ChangeEvent, FormEvent, useState } from "react";
 
 interface InputProps {
   isIncorrectInput: (warn: boolean) => void;
@@ -16,7 +16,7 @@ function Input({isIncorrectInput, submitWord}: InputProps) {
     isIncorrectInput(false);
   }
 
-  const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLButtonElement> | KeyboardEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (word.length !== 5) return isIncorrectInput(true);
 
@@ -25,8 +25,17 @@ function Input({isIncorrectInput, submitWord}: InputProps) {
 
   return (
     <div className="input">
-      <input type="text" maxLength={5} onChange={e => checkInput(e)} />
-      <button onClick={e => handleSubmit(e)}>Submit</button>
+      <input 
+        type="text" 
+        maxLength={5} 
+        onChange={e => checkInput(e)} 
+        onKeyDown={e => {
+          if (e.key === "Enter") {
+            handleSubmit(e);
+          }
+        }}
+      />
+      <button className="submit-button" onClick={e => handleSubmit(e)}>Submit</button>
     </div>
   )
 }

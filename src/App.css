@@ -67,6 +67,10 @@ html, body, input {
   font-weight: 500;
 }
 
+.input {
+  height: 45px;
+}
+
 .input input {
   font-size: 30px;
   text-transform: uppercase;
@@ -84,6 +88,12 @@ html, body, input {
 
 .input input[type=text]:focus {
   outline: none;
+}
+
+.submit-button {
+  position: relative;
+  bottom: 37px;
+  left: 182px;
 }
 
 .card {

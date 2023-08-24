@@ -63,7 +63,7 @@ function GameBoard({answerWord}: GameBoardProps) {
   }
 
   return (
-    <>
+    <div className="game-board">
       <InfoMessage 
         showEndMessage={endState}
         isWin={winState}
@@ -83,11 +83,10 @@ function GameBoard({answerWord}: GameBoardProps) {
             return (
               <Answer word={answers[index]?.word} lettersColor={answers[index]?.colors}/>
             )
-            // return <p key={index}>{answers[index] ? answers[index].word : ''}</p>;
           }
         })
       }
-    </>
+    </div>
   )
 }
 

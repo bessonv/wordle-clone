@@ -6,20 +6,20 @@ interface AnswerProps {
 
 function Answer({word, lettersColor}: AnswerProps) {
   return (
-    <>
-    {
-      (word && lettersColor) ?
-      <p>
-        {
+    <div className="answer">
+      {
+        (word && lettersColor) ?
           word.split('').map((letter, index) => (
-            <span className={lettersColor[index]}>{letter}</span>
+            <span key={index} className={lettersColor[index]}>{letter}</span>
           ))
-        }
-      </p>
-      :
-      ''
-    }
-    </>
+        :
+        [...Array(5)].map((_, index) => (
+          <span key={index}>
+            <b className="blank"></b>
+          </span>
+        ))
+      }
+    </div>
   )
 }
 

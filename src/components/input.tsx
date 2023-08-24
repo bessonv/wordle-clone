@@ -24,10 +24,10 @@ function Input({isIncorrectInput, submitWord}: InputProps) {
   }
 
   return (
-    <p>
-      <input onChange={e => checkInput(e)} />
+    <div className="input">
+      <input type="text" maxLength={5} onChange={e => checkInput(e)} />
       <button onClick={e => handleSubmit(e)}>Submit</button>
-    </p>
+    </div>
   )
 }
 

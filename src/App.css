@@ -7,11 +7,11 @@ html, body, input {
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 
   --yellow: #c9b458;
   --gray: #787c7e;
+  --light-gray: #ccc;
   --green: #6aaa64;
   --white: #fff;
 }
@@ -44,8 +44,31 @@ html, body, input {
   }
 }
 
+header {
+  padding: 5px 0;
+  border-bottom: 2px solid var(--light-gray);
+  font-weight: 500;
+}
+
+.rules {
+  max-width: 500px;
+  font-size: 14px;
+}
+
+.rules ul {
+  text-align: left;
+  margin-left: 90px;
+}
+
+.rules ul li span {
+  color: white;
+  padding: 2px 3px;
+  min-width: 300px;
+}
+
 .game-board {
   width: 300px;
+  margin: 0 auto;
 }
 
 .answer, .input {

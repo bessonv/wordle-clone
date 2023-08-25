@@ -70,17 +70,22 @@ function GameBoard({answerWord}: GameBoardProps) {
         showWarning={warning}
       />
       {
-        [...Array(5)].map((answer, index) => {
+        [...Array(6)].map((_, index) => {
           if (index === tryCount) {
             return (
               <WordInput
+                key={index}
                 isIncorrectInput={(showWarning) => setWarning(showWarning)}
                 submitWord={(word) => checkAnswer(word)}
               />
             );
           } else {
             return (
-              <Answer word={answers[index]?.word} lettersColor={answers[index]?.colors}/>
+              <Answer
+                key={index}
+                word={answers[index]?.word} 
+                lettersColor={answers[index]?.colors}
+              />
             )
           }
         })

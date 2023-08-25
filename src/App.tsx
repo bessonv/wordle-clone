@@ -1,9 +1,25 @@
+import { useEffect, useState } from 'react';
 import './App.css'
 import GameBoard from './components/gameboard';
 
-const defaultWord = 'craft';
-
 function App() {
+
+  const [loading, setLoading] = useState<boolean>(true);
+  const [word, setWord] = useState<string>('');
+  useEffect(() => {
+    fetch('https://random-word-api.herokuapp.com/word?length=5')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setWord(data[0]);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <>
       <header>Wordle-Clone</header>
@@ -16,7 +32,9 @@ function App() {
         <li><span className="gray">gray</span> - letter is not in the word.</li>
       </ul>
       </div>
-      <GameBoard answerWord={defaultWord}/>
+      {
+        loading ? '' : <GameBoard answerWord={word}/>
+      }
     </>
   )
 }

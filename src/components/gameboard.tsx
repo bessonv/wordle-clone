@@ -1,6 +1,6 @@
 import { useState } from "react";
 import InfoMessage from "./infoMessage";
-import Input from "./input";
+import WordInput from "./wordInput";
 import Answer from "./answer";
 
 interface GameBoardProps {
@@ -14,9 +14,8 @@ type Answer = {
 
 function GameBoard({answerWord}: GameBoardProps) {
   
-  const [current, setCurrent] = useState(0); // tryCount
+  const [tryCount, setTryCount] = useState(0);
   const [warning, setWarning] = useState<boolean>(false);
-  // const [answers, setAnswers] = useState<string[]>([]);
   const [answers, setAnswers] = useState<Answer[]>([]);
 
   const [endState, setEndState] = useState<boolean>(false);
@@ -47,7 +46,7 @@ function GameBoard({answerWord}: GameBoardProps) {
       colors: colorsArray
     }
     setAnswers([...answers, answer]);
-    setCurrent(current + 1);
+    setTryCount(tryCount + 1);
 
     if (word === answerWord) {
       setEndState(true);
@@ -72,9 +71,9 @@ function GameBoard({answerWord}: GameBoardProps) {
       />
       {
         [...Array(5)].map((answer, index) => {
-          if (index === current) {
+          if (index === tryCount) {
             return (
-              <Input
+              <WordInput
                 isIncorrectInput={(showWarning) => setWarning(showWarning)}
                 submitWord={(word) => checkAnswer(word)}
               />

@@ -10,7 +10,6 @@ function App() {
     fetch('https://random-word-api.herokuapp.com/word?length=5')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setWord(data[0]);
         setLoading(false);
       })
@@ -26,11 +25,11 @@ function App() {
       <div className="rules">
       <p>Welcome to wordle-clone.
       You have 6 chances to guess a 5-letter word. The color of the letter represent how close your guess to the word.</p>
-      <ul>
+      <p className='colors'><ul>
         <li><span className="green">green</span> - letter on the correct spot</li>
         <li><span className="yellow">yellow</span> - letter is in the word but in the wron spot</li>
         <li><span className="gray">gray</span> - letter is not in the word.</li>
-      </ul>
+      </ul></p>
       </div>
       {
         loading ? '' : <GameBoard answerWord={word}/>

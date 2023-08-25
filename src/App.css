@@ -51,13 +51,18 @@ header {
 }
 
 .rules {
+  font-size: 16px;
+}
+
+.rules .colors {
   max-width: 500px;
-  font-size: 14px;
+  margin: 0 auto;
+  padding-bottom: 30px;
 }
 
 .rules ul {
   text-align: left;
-  margin-left: 90px;
+  margin-left: 80px;
 }
 
 .rules ul li span {

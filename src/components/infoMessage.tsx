@@ -12,8 +12,8 @@ function InfoMessage({showEndMessage = false, isWin, word, showWarning}: InfoMes
       { 
         showEndMessage ? <p className="end-message">
           {
-            (isWin ? 'You Win!' : 'You Lose!') + ` The word is ${word}`
-          }</p>
+            (isWin ? 'You Win!' : 'You Lose!') + ' The word is '
+          }<b>{word.toUpperCase()}</b></p>
         : '' }
       { showWarning ? <p className="warning-message">The word must be 5 letters long</p> : '' }
     </>

@@ -54,7 +54,7 @@ function GameBoard({answerWord}: GameBoardProps) {
       return;
     }
 
-    if (answers.length >= 4) {
+    if (answers.length >= 5) {
       setEndState(true);
       setWinState(false);
       return;
@@ -75,6 +75,7 @@ function GameBoard({answerWord}: GameBoardProps) {
             return (
               <WordInput
                 key={index}
+                isDisabled={winState}
                 isIncorrectInput={(showWarning) => setWarning(showWarning)}
                 submitWord={(word) => checkAnswer(word)}
               />

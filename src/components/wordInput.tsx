@@ -1,11 +1,12 @@
 import { KeyboardEvent, ChangeEvent, FormEvent, useState, useRef, BaseSyntheticEvent, useEffect } from "react";
 
 interface InputProps {
+  isDisabled: boolean;
   isIncorrectInput: (warn: boolean) => void;
   submitWord: (word: string) => void;
 }
 
-function WordInput({isIncorrectInput, submitWord}: InputProps) {
+function WordInput({isDisabled = false, isIncorrectInput, submitWord}: InputProps) {
 
   const [inputArray, setInputArray] = useState<string[]>([...Array(5).fill("")]);
   const [currentFocusIndex, setCurrentFocusIndex] = useState<number>(0);
@@ -73,6 +74,7 @@ function WordInput({isIncorrectInput, submitWord}: InputProps) {
             key={index}
             type="text"
             maxLength={1}
+            disabled={isDisabled}
             ref={(el) => el && (inputRefs.current[index] = el)}
             onChange={e => handleInput(e, index)}
             onKeyUp={e => handleKeyPress(e, index)}
@@ -80,7 +82,7 @@ function WordInput({isIncorrectInput, submitWord}: InputProps) {
           />
         ))
       }
-      <button className="submit-button" onClick={e => handleSubmit(e)}>Submit</button>
+      <button className="submit-button" disabled={isDisabled} onClick={e => handleSubmit(e)}>Submit</button>
     </div>
   )
 }
